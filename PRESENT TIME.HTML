@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <h1 style="text-align: center;"> TODAY'S PRESENT TIME
+    </h1>
+  <style>
+    #clock {
+      font-size: 200px;
+      text-align: center;
+      font-family: "Arial", sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div id="clock"></div>
+  
+  <script>
+    function updateClock() {
+      const now = new Date();
+      let hours = now.getHours();
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = (hours % 12) || 12; // Convert to 12-hour format
+
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
+      const time = `${hours}:${minutes}:${seconds} ${ampm}`;
+      
+      document.getElementById('clock').textContent = time;
+    }
+    
+    // Update the clock every second
+    setInterval(updateClock, 1000);
+    
+    // Initial update
+    updateClock();
+  </script>
+</body>
+</html>
